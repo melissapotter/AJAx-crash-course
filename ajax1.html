@@ -8,6 +8,10 @@
     </head>
     <body>
         <button id="button">Get Text File</button>
+        <br><br>
+        <div id="text"></div>
+        
+        
         <script>
             // create an event listener
             document.getElementById('button').addEventListener('click', loadText);
@@ -16,6 +20,33 @@
                 var xhr = new XMLHttpRequest();
                 //OPEN - type, url/filenmae, aync bool
                 console.log(xhr);
+                // OPEN - type, url/file, async
+                xhr.open('GET', 'sample.txt', true);
+                
+                console.log('READYSTATE: ', xhr.readyState);
+                
+                //used for loaders
+                xhr.onprogress = function(){
+                    console.log('READYSTATE: ', xhr.readyState);
+                };
+                
+                
+                xhr.onload = function(){
+                    console.log('READYSTATE: ', xhr.readyState);
+                    if(this.status == 200){
+                        // console.log(this.responseText);
+                        document.getElementById('text').innerHTML = this.responseText;
+                    } else if(this.status == 404){
+                        document.getElementById('text').innerHTML = 'Not Found';
+                    }
+                };
+                
+                xhr.onerror = function(){
+                    console.log('Request Error');
+                };
+                // sends request
+                
+                xhr.send();
             }
         </script>
     </body>
