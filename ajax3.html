@@ -11,7 +11,19 @@
         <br><br>
         <h1>GitHub Users</h1>
         <div id ="users"></div>
+        <style>
+        .user{
+            display: flex; 
+            background:#f4f4f4;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
         
+        .user ul{
+            list-style: none;
+        }
+        
+        </style>
         <script>
             document.getElementById('button').addEventListener('click', loadUsers);
             
@@ -28,10 +40,10 @@
                         for(var i in users){
                             output +=
                             '<div class ="user">' +
-                            '<img src="'+users[i].avatar_url+'" width="70" height"70">' +
+                            '<img src="'+users[i].avatar_url+'" width="70" height="70">' +
                             '<ul>' +
-                            '<li> ID: ' +users[i].id'</li>' +
-                            '<li>Login: '+users[i].login'</li>' +
+                            '<li> ID: ' +users[i].id+ '</li>' +
+                            '<li>Login: '+users[i].login+ '</li>' +
                             '<ul>' +
                             '</div>';
                         }
